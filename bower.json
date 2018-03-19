@@ -1,0 +1,19 @@
+{
+  "name": "Artist-Directory",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Firas AEN"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-material": "^1.1.5",
+    "angular-ui-router": "0.4.1",
+    "jquery": "^3.2.1",
+    "angular-route": "^1.6.9",
+    "bootstrap": "^4.0.0"
+  }
+}
