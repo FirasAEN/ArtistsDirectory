@@ -6,6 +6,7 @@
     angular.module('ArtistsDirectoryApp', [
         'ngRoute',
         'ngMaterial',
+        'ui.bootstrap',
         'AddressBook'
     ]);
 })();
