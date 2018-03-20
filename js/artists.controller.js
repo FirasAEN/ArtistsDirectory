@@ -7,13 +7,24 @@
     angular.module('AddressBook')
         .controller('AddressBookController', AddressBookController);
 
-    AddressBookController.$inject = ['$log', 'ArtistsService'];
+    AddressBookController.$inject = [
+        '$log',
+        'ArtistsService',
+        'ModalService'
+    ];
 
-    function AddressBookController($log, ArtistsService) {
+    function AddressBookController(
+        $log,
+        ArtistsService,
+        ModalService
+    ) {
 
         var vm = this;
 
         onInit();
+        vm.reverse = reverse;
+        vm.clearSearch = clearSearch;
+        vm.addArtist = addArtist;
 
         function onInit(){
             vm.orderParam = 'name';
@@ -21,17 +32,21 @@
             vm.date = new Date();
         }
 
-        vm.reverse = function () {
+        function reverse() {
             if(vm.orderParam === 'name'){
                 vm.orderParam = '-name';
             } else {
                 vm.orderParam = 'name';
             }
-        };
+        }
 
-        vm.clearSearch = function () {
+        function clearSearch() {
           vm.search = '';
-        };
+        }
+
+        function addArtist(){
+            ModalService.openModal();
+        }
 
         ArtistsService.getArtists()
             .then(_onGetArtistsSuccess);
