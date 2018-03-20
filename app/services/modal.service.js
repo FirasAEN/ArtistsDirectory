@@ -3,7 +3,7 @@
  */
 (function (){
     'use strict';
-    angular.module('AddressBook')
+    angular.module('ArtistsDirectoryApp')
         .factory('ModalService', ModalService);
 
     ModalService.$inject = [
@@ -20,12 +20,14 @@
             let defaultOptions = {
                 templateUrl: '',
                 controller: '',
+                controllerAs: 'vm',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 fullscreen: false
             };
             let locals = angular.extend(defaultOptions, options);
-            $mdDialog.show(locals).then( () => $log.info("ok") , () => $log.error("Not Okay !") );
+
+            return $mdDialog.show(locals);
         }
     }
 })();
