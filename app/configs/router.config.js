@@ -11,7 +11,7 @@
 
     function AppConfig($routeProvider){
         $routeProvider.when('/address-book', {
-            templateUrl: 'address-book.html',
+            templateUrl: 'app/components/address-book/address-book.html',
             controller: 'AddressBookController',
             controllerAs: 'vm'
         })
