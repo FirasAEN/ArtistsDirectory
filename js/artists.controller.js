@@ -45,7 +45,11 @@
         }
 
         function addArtist(){
-            ModalService.openModal();
+            let options = {
+                templateUrl: './js/new-artist-modal.html',
+                controller: 'ModalController',
+            };
+            ModalService.openModal(options);
         }
 
         ArtistsService.getArtists()

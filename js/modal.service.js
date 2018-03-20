@@ -16,15 +16,16 @@
             openModal: openModal
         };
 
-        function openModal() {
-            let options = {
-                templateUrl: './js/new-artist-modal.html',
-                controller: 'ModalController',
+        function openModal(options) {
+            let defaultOptions = {
+                templateUrl: '',
+                controller: '',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 fullscreen: false
             };
-            $mdDialog.show(options).then( () => $log.info("ok") , () => $log.error("Not Okay !") );
+            let locals = angular.extend(defaultOptions, options);
+            $mdDialog.show(locals).then( () => $log.info("ok") , () => $log.error("Not Okay !") );
         }
     }
 })();
