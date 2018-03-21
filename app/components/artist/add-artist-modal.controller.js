@@ -8,23 +8,16 @@
 
     ModalController.$inject = [
         '$sce',
-        '$mdDialog'
+        'ModalService'
     ];
 
     function ModalController($sce,
-                             $mdDialog){
+                             ModalService){
         var vm = this;
         vm.tooltip = $sce.trustAsHtml("tooltip");
 
-        vm.accept = accept;
-        vm.cancel = cancel;
+        vm.accept = ModalService.accept;
+        vm.cancel = ModalService.cancel;
 
-        function accept(){
-            $mdDialog.hide();
-        }
-
-        function cancel() {
-            $mdDialog.cancel();
-        }
     }
 })();
