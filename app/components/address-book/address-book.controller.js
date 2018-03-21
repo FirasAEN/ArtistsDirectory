@@ -59,7 +59,8 @@
                 ToastService.show();
             }
             function _onError() {
-                $log.warn("error")
+                $log.warn("error");
+                ToastService.toast({toastContent: 'No artist added'});
             }
         }
 
