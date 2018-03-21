@@ -56,10 +56,13 @@
 
             function _onSuccess() {
                 $log.warn("success");
-                ToastService.show();
+                ToastService.set({text: 'New artist added', style: 'md-capsule'});
+                ToastService.toast();
             }
             function _onError() {
-                $log.warn("error")
+                $log.warn("error");
+                ToastService.set({text: 'No artist added', style: 'md-capsule'});
+                ToastService.toast();
             }
         }
 
