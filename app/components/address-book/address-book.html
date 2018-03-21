@@ -1,37 +1,37 @@
-<div class="jumbotron">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            <div class="text-center">
-                <h1>Artist Directory</h1>
-                <input class="form-control" ng-model="vm.search" placeholder="Name..."/>
-                <div>&nbsp;</div>
-                <div class="btn-group">
-                    <button class="btn btn-info" ng-click="vm.reverse()">Reverse order</button>
-                    <button class="btn btn-dark" ng-click="vm.clearSearch()">Clear</button>
-                    <button class="btn btn-success" ng-click="vm.addArtist()">Add new artist</button>
+<div>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <div class="text-center">
+                    <h1>Artist Directory</h1>
+                    <input class="form-control" ng-model="vm.search" placeholder="Name..."/>
+                    <div>&nbsp;</div>
+                    <div class="btn-group">
+                        <button class="btn btn-info" ng-click="vm.reverse()">Reverse order</button>
+                        <button class="btn btn-dark" ng-click="vm.clearSearch()">Clear</button>
+                        <button class="btn btn-info" ng-click="vm.addArtist()">Add new artist</button>
+                    </div>
                 </div>
             </div>
+            <div class="col"></div>
         </div>
-        <div class="col"></div>
     </div>
-</div>
 
-
-
-<div class="" ng-show="true">
-    <div class="row">
-        <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter:{'name':vm.search}">
-            <div class="card">
-                <div class="card-header">
-                    <h1>{{artist.name}}</h1>
-                </div>
-                <div class="card-body">
-                    <div class="media">
-                        <!--<img class="align-self-center mr-3 rounded" ng-src="img/{{artist.shortname}}_tn.jpg" alt="photo of {{artist.name}}">-->
-                        <div class="media-body">
-                            <h6 class="card-title">{{artist.reknown}}</h6>
-                            <p class="card-text">{{artist.bio}}</p>
+    <div class="" ng-show="true">
+        <div class="row">
+            <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter:{'name':vm.search}">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>{{artist.name}}</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="media">
+                            <!--<img class="align-self-center mr-3 rounded" ng-src="img/{{artist.shortname}}_tn.jpg" alt="photo of {{artist.name}}">-->
+                            <div class="media-body">
+                                <h6 class="card-title">{{artist.reknown}}</h6>
+                                <p class="card-text">{{artist.bio}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

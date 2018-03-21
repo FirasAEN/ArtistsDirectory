@@ -10,13 +10,15 @@
     AddressBookController.$inject = [
         '$log',
         'ArtistsService',
-        'ModalService'
+        'ModalService',
+        'ToastService'
     ];
 
     function AddressBookController(
         $log,
         ArtistsService,
-        ModalService
+        ModalService,
+        ToastService
     ) {
 
         var vm = this;
@@ -49,7 +51,16 @@
                 templateUrl: 'app/components/artist/add-artist-modal.html',
                 controller: 'ModalController',
             };
-            ModalService.openModal(options).then( () => $log.warn("success") , () => $log.warn("error") );
+            ModalService.openModal(options)
+                .then(_onSuccess, _onError);
+
+            function _onSuccess() {
+                $log.warn("success");
+                ToastService.show();
+            }
+            function _onError() {
+                $log.warn("error")
+            }
         }
 
         ArtistsService.getArtists()
