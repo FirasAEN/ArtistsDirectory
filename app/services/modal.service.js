@@ -13,7 +13,9 @@
     
     function ModalService($log, $mdDialog) {
         return {
-            openModal: openModal
+            openModal: openModal,
+            accept: accept,
+            cancel: cancel
         };
 
         function openModal(options) {
@@ -28,6 +30,14 @@
             let locals = angular.extend(defaultOptions, options);
 
             return $mdDialog.show(locals);
+        }
+
+        function accept() {
+            $mdDialog.hide();
+        }
+
+        function cancel() {
+            $mdDialog.cancel();
         }
     }
 })();
