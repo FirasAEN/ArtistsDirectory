@@ -6,14 +6,29 @@
     angular.module('AddressBook')
         .controller('AddressBookToasterController', AddressBookToasterController);
 
-    AddressBookToasterController.$inject = ['toastContent'];
+    AddressBookToasterController.$inject = [
+        '$element',
+        'ToastService',
+        'toaster'];
 
-    function AddressBookToasterController(toastContent) {
+    function AddressBookToasterController($element, ToastService, toaster) {
         let vm = this;
-        vm.toast = toastContent;
+        vm.text = toaster.text;
+        vm.hide = closeToaster;
 
         init();
         function init(){
+            // $element.addClass(vm.style);
+            // angular.element(_addClass);
+        }
+
+        function _addClass(){
+            angular.element('#addressBookToaster')
+                .addClass(vm.style);
+        }
+
+        function closeToaster(){
+            ToastService.hide();
         }
     }
 })();
