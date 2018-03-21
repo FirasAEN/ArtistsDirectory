@@ -7,10 +7,11 @@
         .factory('ToastService', ToastService);
 
     ToastService.$inject = [
+        '$log',
         '$mdToast'
     ];
     
-    function ToastService($mdToast) {
+    function ToastService($log, $mdToast) {
 
         return {
             show: show,
@@ -47,6 +48,7 @@
             angular.forEach(options, (elem) => {
                 if(elem === 'toastContent'){
                     locals[elem] = options.elem;
+                    delete options.elem;
                 }
             });
             options = angular.extend(options, locals);
