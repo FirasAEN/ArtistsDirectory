@@ -53,7 +53,7 @@
 
         <div class="" ng-show="true">
             <div class="row">
-                <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam">
+                <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter: {name: vm.search}">
                     <artist data="artist" address-book="true"></artist>
                 </div>
             </div>
