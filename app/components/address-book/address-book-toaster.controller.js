@@ -26,8 +26,8 @@
         }
 
         function _addClass(){
-            // angular.element('#toasterContainer')
-            //     .addClass('md-toaster-fixed-top-visible');
+            angular.element('#toasterContainer')
+                .addClass('md-toaster-fixed-top-visible');
 
             // angular.element('#sideNavTrigger')
             //     .addClass('elevate');

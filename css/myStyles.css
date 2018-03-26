@@ -27,8 +27,8 @@
 }
 
 .md-toaster-fixed-top {
-    width: 50%;
-    height: 100%;
+    width: 0%;
+    height: 0%;
     top: 0% !important;
     right: 0% !important;
     position: fixed !important;
@@ -36,8 +36,8 @@
 }
 
 .md-toaster-fixed-top-visible {
-    width: auto;
-    height: auto
+    width: 50%;
+    height: 3cm
 }
 
 .md-sidenav-left {
