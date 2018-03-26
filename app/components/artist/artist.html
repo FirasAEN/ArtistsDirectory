@@ -37,7 +37,8 @@
         <md-card-content>
             <p>{{vm.artist.bio}}</p>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
+
+        <md-card-actions ng-if="vm.addressBookView" layout="row" layout-align="end center">
             <md-button class="md-raised" ng-click="vm.openArtistInfo()">
                 <md-icon>visibility</md-icon>
             </md-button>

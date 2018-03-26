@@ -10,7 +10,8 @@
         controller: ArtistController,
         controllerAs: 'vm',
         bindings: {
-            data: '<'
+            data: '<',
+            addressBook: '='
         }
     };
 
@@ -30,11 +31,13 @@
 
         function onInit(){
             vm.artist = this.data;
+            vm.addressBookView = this.addressBook;
         }
 
         function openArtistInfo(){
+            ModalService.set({artist: vm.artist});
             ModalService.openModal({
-                templateUrl: 'artist-info-modal.html',
+                templateUrl: 'app/components/artist/artist-info-modal.html',
                 controller: 'ArtistInfoController'
             })
         }
