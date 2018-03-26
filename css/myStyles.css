@@ -9,3 +9,61 @@
 /*ul {*/
     /*list-style: none;*/
 /*}*/
+
+.md-fab-fixed-top {
+    width: 100%;
+    top: 22% !important;
+    right: 0% !important;
+    position: fixed !important;
+    z-index: 50;
+}
+
+.md-fab-fixed-bottom {
+    width: 100%;
+    top: 90% !important;
+    right: 0% !important;
+    position: fixed !important;
+    z-index: 50;
+}
+
+.md-toaster-fixed-top {
+    width: 50%;
+    height: 100%;
+    top: 0% !important;
+    right: 0% !important;
+    position: fixed !important;
+    z-index: 50;
+}
+
+.md-toaster-fixed-top-visible {
+    width: auto;
+    height: auto
+}
+
+.md-sidenav-left {
+    width: 100%;
+    height: 100%;
+    top: 0% !important;
+    position: fixed !important;
+    z-index: 60;
+}
+
+.md-sidenav-trigger-btn {
+    width: 100%;
+    top: 2% !important;
+    left: 2% !important;
+    position: absolute !important;
+}
+
+.red {
+    border-color: blue;
+    background-color: red;
+}
+
+.icon-color {
+    color: #ff0c34;
+}
+
+.elevate {
+    z-index: 51;
+}

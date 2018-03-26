@@ -42,7 +42,7 @@
                 templateUrl: 'app/components/address-book/address-book-toaster.html',
                 controller: 'AddressBookToasterController',
                 controllerAs: 'vm',
-                parent: angular.element('#addressBookContainer')[0],
+                parent: angular.element('#toasterContainer')[0],
                 position: 'top right',
                 hideDelay: 5000,
                 resolve: {toaster: getToasterDataContent}

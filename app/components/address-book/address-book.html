@@ -1,41 +1,106 @@
-<div id="addressBookContainer">
-    <div id="addressBookHeaderContainer" class="jumbotron">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <div class="text-center">
-                    <h1>Artist Directory</h1>
-                    <input class="form-control" ng-model="vm.search" placeholder="Name..."/>
-                    <div>&nbsp;</div>
-                    <div class="btn-group">
-                        <button class="btn btn-info" ng-click="vm.reverse()">Reverse order</button>
-                        <button class="btn btn-dark" ng-click="vm.clearSearch()">Clear</button>
-                        <button class="btn btn-info" ng-click="vm.addArtist()">Add new artist</button>
-                    </div>
+<div flex id="sideNavContainer" ng-class="{'md-sidenav-left':vm.sideNavState}">
+    <md-sidenav flex="20" md-component-id="left" md-is-open="vm.sideNavState">
+        <div>
+            <md-toolbar class="md-theme-light">
+                <div layout-padding layout-align="center center">
+                    <h1 class="md-toolbar-tools">Settings</h1>
+                </div>
+            </md-toolbar>
+            <md-divider></md-divider>
+            <div layout-padding layout="column" layout-align="start start">
+
+                <div layout-fill flex layout="row" layout-align="start center">
+                    <md-button ng-click="vm.addArtistFromSideNav()" class="md-icon-button md-raised">
+                        <md-icon>person</md-icon>
+                    </md-button>
+                    <span>Add new artist</span>
+                </div>
+
+                <div layout-fill layout="row" layout-align="start center">
+                    <md-button ng-click="vm.switchSideNav()" class="md-icon-button md-raised md-warn">
+                        <md-icon>cancel</md-icon>
+                    </md-button>
+                    <span>Close</span>
                 </div>
             </div>
-            <div class="col"></div>
         </div>
-    </div>
+    </md-sidenav>
+</div>
 
-    <div class="" ng-show="true">
-        <div class="row">
-            <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter:{'name':vm.search}">
-                <div class="card">
-                    <div class="card-header">
-                        <h1>{{artist.name}}</h1>
+<div flex>
+    <div id="toasterContainer" class="md-toaster-fixed-top"></div>
+
+    <div id="addressBookContainer" layout="column" layout-align="start stretch" ng-show="true">
+        <div id="sideNavTrigger" class="md-sidenav-trigger-btn">
+            <md-button class="md-fab md-raised" ng-click="vm.switchSideNav()">
+                <md-icon>settings</md-icon>
+            </md-button>
+        </div>
+
+        <div id="addressBookHeaderContainer" class="jumbotron">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="text-center">
+                        <h1>People Directory</h1>
+                        <input class="form-control" ng-model="vm.search" placeholder="Name..."/>
+                        <div>&nbsp;</div>
                     </div>
-                    <div class="card-body">
-                        <div class="media">
-                            <!--<img class="align-self-center mr-3 rounded" ng-src="img/{{artist.shortname}}_tn.jpg" alt="photo of {{artist.name}}">-->
-                            <div class="media-body">
-                                <h6 class="card-title">{{artist.reknown}}</h6>
-                                <p class="card-text">{{artist.bio}}</p>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+        <div class="" ng-show="true">
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter:{'name':vm.search}">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>{{artist.name}}</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="media">
+                                <!--<img class="align-self-center mr-3 rounded" ng-src="img/{{artist.shortname}}_tn.jpg" alt="photo of {{artist.name}}">-->
+                                <div class="media-body">
+                                    <h6 class="card-title">{{artist.reknown}}</h6>
+                                    <p class="card-text">{{artist.bio}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="toolbarContainer" class="md-fab-fixed-bottom" ng-show="vm.show">
+        <md-fab-toolbar md-direction="left"
+                        md-open="vm.open">
+            <md-fab-trigger class="align-with-text">
+                <md-button class="md-fab md-raised">
+                    <md-icon>{{vm.icon}}</md-icon>
+                </md-button>
+            </md-fab-trigger>
+
+            <md-toolbar>
+                <md-fab-actions class="md-toolbar-tools">
+                    <md-button class="md-fab md-raised" ng-click="vm.isOpen()">
+                        <md-icon class="material-icons">keyboard_arrow_right</md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-raised" ng-click="vm.reverse()">
+                        <!--<md-tooltip md-direction="top">Sort by name</md-tooltip>-->
+                        <md-icon>sort_by_alpha</md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-raised" ng-click="vm.clearSearch()">
+                        <!--<md-tooltip md-direction="top">Clear search</md-tooltip>-->
+                        <md-icon>clear_all</md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-raised" ng-click="vm.addArtist()">
+                        <!--<md-tooltip md-direction="top">Add artist</md-tooltip>-->
+                        <md-icon>person_add</md-icon>
+                    </md-button>
+                </md-fab-actions>
+            </md-toolbar>
+        </md-fab-toolbar>
     </div>
 </div>
