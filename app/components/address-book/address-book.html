@@ -30,7 +30,7 @@
 <div flex>
     <div id="toasterContainer" class="md-toaster-fixed-top"></div>
 
-    <div id="addressBookContainer" layout="column" layout-align="start stretch" ng-show="true">
+    <md-content id="addressBookContainer" layout="column" layout-align="start stretch" ng-show="true">
         <div id="sideNavTrigger" class="md-sidenav-trigger-btn">
             <md-button class="md-fab md-raised" ng-click="vm.switchSideNav()">
                 <md-icon>settings</md-icon>
@@ -53,25 +53,12 @@
 
         <div class="" ng-show="true">
             <div class="row">
-                <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter:{'name':vm.search}">
-                    <div class="card">
-                        <div class="card-header">
-                            <h1>{{artist.name}}</h1>
-                        </div>
-                        <div class="card-body">
-                            <div class="media">
-                                <!--<img class="align-self-center mr-3 rounded" ng-src="img/{{artist.shortname}}_tn.jpg" alt="photo of {{artist.name}}">-->
-                                <div class="media-body">
-                                    <h6 class="card-title">{{artist.reknown}}</h6>
-                                    <p class="card-text">{{artist.bio}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam">
+                    <artist data="artist"></artist>
                 </div>
             </div>
         </div>
-    </div>
+    </md-content>
 
     <div id="toolbarContainer" class="md-fab-fixed-bottom" ng-show="vm.show">
         <md-fab-toolbar md-direction="left"
