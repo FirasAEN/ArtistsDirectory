@@ -4,5 +4,8 @@
 (function(){
     'use strict';
 
-    angular.module('AddressBook', []);
+    angular.module('addressBook',
+        ['addressBook.services',
+            'addressBook.layout'
+        ]);
 })();

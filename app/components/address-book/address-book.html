@@ -1,41 +1,37 @@
-<div id="addressBookContainer">
-    <div id="addressBookHeaderContainer" class="jumbotron">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <div class="text-center">
-                    <h1>Artist Directory</h1>
-                    <input class="form-control" ng-model="vm.search" placeholder="Name..."/>
-                    <div>&nbsp;</div>
-                    <div class="btn-group">
-                        <button class="btn btn-info" ng-click="vm.reverse()">Reverse order</button>
-                        <button class="btn btn-dark" ng-click="vm.clearSearch()">Clear</button>
-                        <button class="btn btn-info" ng-click="vm.addArtist()">Add new artist</button>
+<address-book-navBar></address-book-navBar>
+
+<div flex>
+    <div id="toasterContainer" class="md-toaster-fixed-top"></div>
+
+    <div id="addressBookContainer" layout="column" layout-align="start stretch">
+        <div id="sideNavTrigger" class="md-sidenav-trigger-btn">
+            <md-button class="md-fab md-raised" ng-click="vm.switchSideNav()">
+                <md-icon>settings</md-icon>
+            </md-button>
+        </div>
+
+        <div id="addressBookHeaderContainer" class="jumbotron">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="text-center">
+                        <h1>People Directory</h1>
+                        <input class="form-control" ng-model="vm.search" placeholder="Name..."/>
+                        <div>&nbsp;</div>
                     </div>
                 </div>
+                <div class="col"></div>
             </div>
-            <div class="col"></div>
         </div>
-    </div>
 
-    <div class="" ng-show="true">
-        <div class="row">
-            <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter:{'name':vm.search}">
-                <div class="card">
-                    <div class="card-header">
-                        <h1>{{artist.name}}</h1>
-                    </div>
-                    <div class="card-body">
-                        <div class="media">
-                            <!--<img class="align-self-center mr-3 rounded" ng-src="img/{{artist.shortname}}_tn.jpg" alt="photo of {{artist.name}}">-->
-                            <div class="media-body">
-                                <h6 class="card-title">{{artist.reknown}}</h6>
-                                <p class="card-text">{{artist.bio}}</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="">
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter: {name: vm.search}">
+                    <artist data="artist" address-book="true"></artist>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<address-book-toolbar></address-book-toolbar>

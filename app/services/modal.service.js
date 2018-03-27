@@ -3,19 +3,23 @@
  */
 (function (){
     'use strict';
-    angular.module('ArtistsDirectoryApp')
+    angular.module('addressBook.services')
         .factory('ModalService', ModalService);
 
     ModalService.$inject = [
         '$log',
-        '$mdDialog'
+        '$mdDialog',
+        '$q'
     ];
     
-    function ModalService($log, $mdDialog) {
+    function ModalService($log, $mdDialog, $q) {
+        let modalDataContent = {};
+
         return {
             openModal: openModal,
             accept: accept,
-            cancel: cancel
+            cancel: cancel,
+            set: setModalDataContent
         };
 
         function openModal(options) {
@@ -25,7 +29,8 @@
                 controllerAs: 'vm',
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
-                fullscreen: false
+                fullscreen: false,
+                resolve: {modalData: getModalDataContent}
             };
             let locals = angular.extend(defaultOptions, options);
 
@@ -38,6 +43,16 @@
 
         function cancel() {
             $mdDialog.cancel();
+        }
+
+        function setModalDataContent(options){
+            modalDataContent = angular.extend(modalDataContent, options);
+        }
+
+        function getModalDataContent() {
+            let deferred = $q.defer();
+            deferred.resolve(modalDataContent);
+            return deferred.promise;
         }
     }
 })();

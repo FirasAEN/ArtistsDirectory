@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <!--<link rel="stylesheet" href="css/myStyles.css">-->
+        <link rel="stylesheet" href="bower_components/material-design-icons/iconfont/material-icons.css">
+        <link rel="stylesheet" href="css/myStyles.css">
     </head>
 
-    <body class="" ng-cloack>
+    <body id="addressBookMain" class="" ng-cloack>
         <div id="mainContainer" layout-fill ng-view></div>
 
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -35,7 +36,15 @@
         <script src="app/components/address-book/address-book-toaster.controller.js"></script>
 
         <script src="app/components/artist/add-artist-modal.controller.js"></script>
+        <script src="app/components/artist/artist.component.js"></script>
+        <script src="app/components/artist/artist-info-modal-controller.js"></script>
+        <script src="app/components/artist/artist-ui.service.js"></script>
 
+        <script src="app/layout/layout.module.js"></script>
+        <script src="app/layout/navigation-bar/address-book-left-nav-bar.component.js"></script>
+        <script src="app/layout/toolbar/address-book-toolbar.component.js"></script>
+
+        <script src="app/services/services.module.js"></script>
         <script src="app/services/modal.service.js"></script>
         <script src="app/services/toast.service.js"></script>
     </body>

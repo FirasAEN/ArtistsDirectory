@@ -4,74 +4,98 @@
 (function (){
     'use strict';
 
-    angular.module('AddressBook')
+    angular.module('addressBook')
         .controller('AddressBookController', AddressBookController);
 
     AddressBookController.$inject = [
+        '$scope',
         '$log',
+        '$timeout',
+        '$interval',
         'ArtistsService',
         'ModalService',
         'ToastService'
     ];
 
     function AddressBookController(
+        $scope,
         $log,
-        ArtistsService,
-        ModalService,
-        ToastService
+        $timeout,
+        $interval,
+        ArtistsService
     ) {
 
         var vm = this;
 
         onInit();
-        vm.reverse = reverse;
-        vm.clearSearch = clearSearch;
-        vm.addArtist = addArtist;
+        onDestroy();
+
+        vm.switchSideNav = switchSideNav;
+
+
+        ////////////////////
+        // initialisation
+        ////////////////////
 
         function onInit(){
             vm.orderParam = 'name';
             vm.search = '';
-            vm.date = new Date();
+
+            _initEvents();
+
+            ArtistsService.getArtists()
+                .then(_onGetArtistsSuccess);
         }
 
-        function reverse() {
-            if(vm.orderParam === 'name'){
-                vm.orderParam = '-name';
-            } else {
-                vm.orderParam = 'name';
-            }
+
+        ////////////////////
+        // binded functions
+        ////////////////////
+
+        function switchSideNav(){
+            $scope.$broadcast('switch-sidenav');
         }
 
-        function clearSearch() {
-          vm.search = '';
-        }
-
-        function addArtist(){
-            let options = {
-                templateUrl: 'app/components/artist/add-artist-modal.html',
-                controller: 'ModalController',
-            };
-            ModalService.openModal(options)
-                .then(_onSuccess, _onError);
-
-            function _onSuccess() {
-                $log.warn("success");
-                ToastService.set({text: 'New artist added', style: 'md-capsule'});
-                ToastService.toast();
-            }
-            function _onError() {
-                $log.warn("error");
-                ToastService.set({text: 'No artist added', style: 'md-capsule'});
-                ToastService.toast();
-            }
-        }
-
-        ArtistsService.getArtists()
-            .then(_onGetArtistsSuccess);
+        ////////////////////
+        // private functions
+        ////////////////////
 
         function _onGetArtistsSuccess() {
             vm.artists = ArtistsService.getAll();
         }
 
+        function _display(){
+            if(vm.icon === icons.open){
+                vm.icon = icons.close;
+                $timeout(()=> {vm.show = !vm.show;}, 1000);
+            }
+            else if(vm.icon === icons.close){
+                vm.show = !vm.show;
+                $timeout(()=> {vm.icon = icons.open;}, 1000);
+            }
+        }
+
+        function _initEvents() {
+            $scope.$on('clear-search', function(){
+                vm.search = '';
+                $log.debug('Search cleared');
+            });
+
+            $scope.$on('reverse-order', function(){
+                $log.debug('Order reversed');
+                if(vm.orderParam === 'name'){
+                    vm.orderParam = '-name';
+                } else {
+                    vm.orderParam = 'name';
+                }
+            });
+        }
+
+        ////////////////////
+        // destruction
+        ////////////////////
+
+        function onDestroy(){
+        }
     }
 })();

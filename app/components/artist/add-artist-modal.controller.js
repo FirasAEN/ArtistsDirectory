@@ -3,8 +3,8 @@
  */
 (function(){
     'use strict';
-    angular.module('AddressBook')
-        .controller('ModalController', ModalController);
+    angular.module('addressBook')
+        .controller('AddArtistModalController', ModalController);
 
     ModalController.$inject = [
         '$sce',
