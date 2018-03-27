@@ -17,12 +17,20 @@
     LeftNavigationBarController.$inject = [
         '$scope',
         '$rootScope',
-        '$log'
+        '$log',
+        '$q',
+        '$timeout',
+        'ArtistUiService',
+        'ToastService'
     ];
 
     function LeftNavigationBarController($scope,
                                          $rootScope,
-                                         $log){
+                                         $log,
+                                         $q,
+                                         $timeout,
+                                         ArtistUiService,
+                                         ToastService){
         var vm = this;
 
         vm.$onInit = onInit;
@@ -46,12 +54,20 @@
         ////////////////////
 
         function addArtistFromSideNav(){
-            switchSideNav();
-            $rootScope.$broadcast('add-artist');
+            switchSideNav().then(_onSwitchSideNavSuccess);
+
+            function _onSwitchSideNavSuccess() {
+                _addArtist();
+            }
         }
 
         function switchSideNav(){
-            $scope.$emit('switch-sidenav');
+            var deferred = $q.defer();
+            $timeout(()=>{
+                $scope.$emit('switch-sidenav');
+                deferred.resolve();
+            });
+            return deferred.promise;
         }
 
 
@@ -63,6 +79,26 @@
                 vm.sideNavState = !vm.sideNavState;
                 $log.debug('Side nav switched');
             });
+        }
+
+        function _addArtist(){
+            let options = {
+                templateUrl: 'app/components/artist/add-artist-modal.html',
+                controller: 'ModalController',
+            };
+            ArtistUiService.addNewArtist(options)
+                .then(_onSuccess, _onError);
+
+            function _onSuccess() {
+                $log.warn("success");
+                ToastService.set({text: 'New artist added', style: 'md-capsule'});
+                ToastService.toast();
+            }
+            function _onError() {
+                $log.warn("error");
+                ToastService.set({text: 'No artist added', style: 'md-capsule'});
+                ToastService.toast();
+            }
         }
 
         ////////////////////
