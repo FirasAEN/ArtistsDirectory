@@ -1,0 +1,43 @@
+<md-dialog aria-label="List dialog">
+    <!--<md-toolbar>-->
+        <div flex layout="row" layout-align="space-between center" class="md-toolbar-tools">
+            <h3>Add a new artist</h3>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    <!--</md-toolbar>-->
+
+    <md-divider></md-divider>
+    <md-dialog-content class="md-dialog-content">
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+
+        <div layout="row" layout-align="space-around center">
+            <button ng-click="vm.accept()" class="btn btn-info">
+                <md-tooltip md-direction="bottom">Retrieve data</md-tooltip>
+                <span>Download</span>
+            </button>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions>
+        <!--<md-button ng-click="vm.accept()" class="md-primary md-raised">-->
+            <!--<span>Accept</span>-->
+        <!--</md-button>-->
+
+        <!--<md-button ng-click="vm.cancel()" class="md-warn md-raised">-->
+            <!--<span>Cancel</span>-->
+        <!--</md-button>-->
+
+        <div class="btn-group">
+            <button class="btn btn-info" ng-click="vm.accept()">
+                <span>Accept</span>
+            </button>
+            <button class="btn btn-danger" ng-click="vm.cancel()">
+                <span>Cancel</span>
+            </button>
+        </div>
+    </md-dialog-actions>
+</md-dialog>

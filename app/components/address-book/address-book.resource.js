@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    angular.module('AddressBook')
+    angular.module('addressBook')
         .factory('ArtistsService', ArtistsService);
 
     ArtistsService.$inject = ['$http', '$log'];
