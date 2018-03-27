@@ -3,7 +3,7 @@
 <div flex>
     <div id="toasterContainer" class="md-toaster-fixed-top"></div>
 
-    <div id="addressBookContainer" layout="column" layout-align="start stretch" ng-show="true">
+    <div id="addressBookContainer" layout="column" layout-align="start stretch">
         <div id="sideNavTrigger" class="md-sidenav-trigger-btn">
             <md-button class="md-fab md-raised" ng-click="vm.switchSideNav()">
                 <md-icon>settings</md-icon>
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="" ng-show="true">
+        <div class="">
             <div class="row">
                 <div class="col-sm-6" ng-repeat="artist in vm.artists | limitTo: 12 | orderBy: vm.orderParam | filter: {name: vm.search}">
                     <artist data="artist" address-book="true"></artist>
@@ -32,35 +32,6 @@
             </div>
         </div>
     </div>
-
-    <div id="toolbarContainer" class="md-fab-fixed-bottom" ng-show="vm.show">
-        <md-fab-toolbar md-direction="left"
-                        md-open="vm.open">
-            <md-fab-trigger class="align-with-text">
-                <md-button class="md-fab md-raised" ng-click="vm.expandToolbar()">
-                    <md-icon>{{vm.icon}}</md-icon>
-                </md-button>
-            </md-fab-trigger>
-
-            <md-toolbar ng-click="vm.shrinkToolbar()">
-                <md-fab-actions class="md-toolbar-tools">
-                    <md-button class="md-fab md-raised" ng-click="vm.isOpen()">
-                        <md-icon class="material-icons">keyboard_arrow_right</md-icon>
-                    </md-button>
-                    <md-button class="md-fab md-raised" ng-click="vm.reverse()">
-                        <!--<md-tooltip md-direction="top">Sort by name</md-tooltip>-->
-                        <md-icon>sort_by_alpha</md-icon>
-                    </md-button>
-                    <md-button class="md-fab md-raised" ng-click="vm.clearSearch()">
-                        <!--<md-tooltip md-direction="top">Clear search</md-tooltip>-->
-                        <md-icon>clear_all</md-icon>
-                    </md-button>
-                    <md-button class="md-fab md-raised" ng-click="vm.addArtist()">
-                        <!--<md-tooltip md-direction="top">Add artist</md-tooltip>-->
-                        <md-icon>person_add</md-icon>
-                    </md-button>
-                </md-fab-actions>
-            </md-toolbar>
-        </md-fab-toolbar>
-    </div>
 </div>
+
+<address-book-toolbar></address-book-toolbar>

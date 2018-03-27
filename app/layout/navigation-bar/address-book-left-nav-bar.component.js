@@ -51,7 +51,7 @@
         }
 
         function switchSideNav(){
-            $scope.$broadcast('switch-sidenav');
+            $scope.$emit('switch-sidenav');
         }
 
 
