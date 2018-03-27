@@ -19,11 +19,15 @@
 }
 
 .md-fab-fixed-bottom {
-    width: 100%;
+    width: 2cm;
     top: 90% !important;
     right: 0% !important;
     position: fixed !important;
     z-index: 50;
+}
+
+.md-fab-fixed-bottom-toolbar-visible {
+    width: 100%;
 }
 
 .md-toaster-fixed-top {

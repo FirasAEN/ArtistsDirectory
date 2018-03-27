@@ -64,12 +64,12 @@
         <md-fab-toolbar md-direction="left"
                         md-open="vm.open">
             <md-fab-trigger class="align-with-text">
-                <md-button class="md-fab md-raised">
+                <md-button class="md-fab md-raised" ng-click="vm.expandToolbar()">
                     <md-icon>{{vm.icon}}</md-icon>
                 </md-button>
             </md-fab-trigger>
 
-            <md-toolbar>
+            <md-toolbar ng-click="vm.shrinkToolbar()">
                 <md-fab-actions class="md-toolbar-tools">
                     <md-button class="md-fab md-raised" ng-click="vm.isOpen()">
                         <md-icon class="material-icons">keyboard_arrow_right</md-icon>

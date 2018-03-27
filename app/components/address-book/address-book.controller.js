@@ -8,6 +8,7 @@
         .controller('AddressBookController', AddressBookController);
 
     AddressBookController.$inject = [
+        '$scope',
         '$log',
         '$timeout',
         '$interval',
@@ -17,6 +18,7 @@
     ];
 
     function AddressBookController(
+        $scope,
         $log,
         $timeout,
         $interval,
@@ -29,12 +31,16 @@
         var icons = {open: 'menu', close: 'lock_outline'};
 
         onInit();
+        onDestroy();
+
         vm.reverse = reverse;
         vm.clearSearch = clearSearch;
         vm.addArtist = addArtist;
         vm.isOpen = isOpen;
         vm.switchSideNav = switchSideNav;
         vm.addArtistFromSideNav = addArtistFromSideNav;
+        vm.expandToolbar = expandToolbar;
+        vm.shrinkToolbar = shrinkToolbar;
 
         function onInit(){
             vm.orderParam = 'name';
@@ -86,10 +92,6 @@
             addArtist();
         }
 
-        function _onGetArtistsSuccess() {
-            vm.artists = ArtistsService.getAll();
-        }
-
         function isOpen(){
             vm.open = !vm.open;
         }
@@ -97,6 +99,11 @@
         function switchSideNav(){
             vm.sideNavState = !vm.sideNavState;
         }
+
+        function _onGetArtistsSuccess() {
+            vm.artists = ArtistsService.getAll();
+        }
+
 
         function _display(){
             if(vm.icon === icons.open){
@@ -109,5 +116,17 @@
             }
         }
 
+        function expandToolbar(){
+            angular.element("#toolbarContainer")
+                .addClass('md-fab-fixed-bottom-toolbar-visible');
+        }
+
+        function shrinkToolbar() {
+            angular.element('#toolbarContainer').removeClass('md-fab-fixed-bottom-toolbar-visible');
+        }
+
+
+        function onDestroy(){
+        }
     }
 })();
