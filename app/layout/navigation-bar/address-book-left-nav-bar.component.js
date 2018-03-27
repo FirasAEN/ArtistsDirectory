@@ -47,7 +47,7 @@
 
         function addArtistFromSideNav(){
             switchSideNav();
-            addArtist();
+            $rootScope.$broadcast('add-artist');
         }
 
         function switchSideNav(){

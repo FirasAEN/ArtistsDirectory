@@ -109,6 +109,10 @@
         }
 
         function _initEvents(){
+            $scope.$on('add-artist', function(){
+                $log.debug('Adding artists');
+                addArtist();
+            });
         }
 
         function _checkToolbarStatus(){
