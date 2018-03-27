@@ -68,7 +68,7 @@
         function addArtist(){
             let options = {
                 templateUrl: 'app/components/artist/add-artist-modal.html',
-                controller: 'ModalController',
+                controller: 'AddArtistModalController',
             };
             ArtistUiService.addNewArtist(options)
                 .then(_onSuccess, _onError);
