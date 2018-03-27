@@ -4,7 +4,7 @@
 (function(){
     'use strict';
     angular.module('addressBook')
-        .controller('ModalController', ModalController);
+        .controller('AddArtistModalController', ModalController);
 
     ModalController.$inject = [
         '$sce',
