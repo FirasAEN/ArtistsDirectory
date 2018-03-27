@@ -4,7 +4,7 @@
 (function (){
     'use strict';
 
-    angular.module('AddressBook')
+    angular.module('addressBook')
         .controller('AddressBookController', AddressBookController);
 
     AddressBookController.$inject = [

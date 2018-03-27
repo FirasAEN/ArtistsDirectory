@@ -3,7 +3,7 @@
  */
 (function(){
     'use strict';
-    angular.module('AddressBook')
+    angular.module('addressBook')
         .controller('AddressBookToasterController', AddressBookToasterController);
 
     AddressBookToasterController.$inject = [

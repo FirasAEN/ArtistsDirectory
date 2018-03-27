@@ -3,7 +3,7 @@
  */
 (function(){
     'use strict';
-    angular.module('ArtistsDirectoryApp')
+    angular.module('addressBook.services')
         .factory('ToastService', ToastService);
 
     ToastService.$inject = [

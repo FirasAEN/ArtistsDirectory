@@ -7,6 +7,6 @@
         'ngRoute',
         'ngMaterial',
         'ui.bootstrap',
-        'AddressBook'
+        'addressBook'
     ]);
 })();

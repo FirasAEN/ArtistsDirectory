@@ -15,7 +15,7 @@
         }
     };
 
-    angular.module('AddressBook')
+    angular.module('addressBook')
         .component('artist', artist);
 
     ArtistController.$inject = [
