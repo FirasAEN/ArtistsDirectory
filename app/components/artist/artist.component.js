@@ -11,7 +11,7 @@
         controllerAs: 'vm',
         bindings: {
             data: '<',
-            addressBook: '='
+            addressBook: '<'
         }
     };
 
