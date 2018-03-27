@@ -22,16 +22,16 @@
         '$scope',
         '$q',
         '$timeout',
-        'ModalService',
-        'ToastService'
+        'ToastService',
+        'ArtistUiService'
     ];
 
     function AddressBookToolbarController($log,
                                           $scope,
                                           $q,
                                           $timeout,
-                                          ModalService,
-                                          ToastService){
+                                          ToastService,
+                                          ArtistUiService){
         var vm = this;
         var icons = {open: 'menu', close: 'lock_outline'};
 
@@ -70,7 +70,7 @@
                 templateUrl: 'app/components/artist/add-artist-modal.html',
                 controller: 'ModalController',
             };
-            ModalService.openModal(options)
+            ArtistUiService.addNewArtist(options)
                 .then(_onSuccess, _onError);
 
             function _onSuccess() {
