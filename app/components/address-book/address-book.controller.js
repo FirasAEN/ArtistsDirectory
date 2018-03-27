@@ -33,26 +33,40 @@
         onInit();
         onDestroy();
 
+        vm.switchSideNav = switchSideNav;
         vm.reverse = reverse;
         vm.clearSearch = clearSearch;
         vm.addArtist = addArtist;
         vm.isOpen = isOpen;
-        vm.switchSideNav = switchSideNav;
-        vm.addArtistFromSideNav = addArtistFromSideNav;
         vm.expandToolbar = expandToolbar;
         vm.shrinkToolbar = shrinkToolbar;
+
+
+        ////////////////////
+        // initialisation
+        ////////////////////
 
         function onInit(){
             vm.orderParam = 'name';
             vm.search = '';
             vm.open = false;
-            vm.sideNavState = false;
             vm.show = true;
             vm.icon = icons.open;
             vm.input = '';
-            // $interval(_display, 5000);
+
+            _initEvents();
+
             ArtistsService.getArtists()
                 .then(_onGetArtistsSuccess);
+        }
+
+
+        ////////////////////
+        // binded functions
+        ////////////////////
+
+        function switchSideNav(){
+            $scope.$broadcast('switch-sidenav');
         }
 
         function reverse() {
@@ -87,23 +101,26 @@
             }
         }
 
-        function addArtistFromSideNav(){
-            switchSideNav();
-            addArtist();
-        }
-
         function isOpen(){
             vm.open = !vm.open;
         }
 
-        function switchSideNav(){
-            vm.sideNavState = !vm.sideNavState;
+        function expandToolbar(){
+            angular.element("#toolbarContainer")
+                .addClass('md-fab-fixed-bottom-toolbar-visible');
         }
+
+        function shrinkToolbar() {
+            angular.element('#toolbarContainer').removeClass('md-fab-fixed-bottom-toolbar-visible');
+        }
+
+        ////////////////////
+        // private functions
+        ////////////////////
 
         function _onGetArtistsSuccess() {
             vm.artists = ArtistsService.getAll();
         }
-
 
         function _display(){
             if(vm.icon === icons.open){
@@ -116,15 +133,13 @@
             }
         }
 
-        function expandToolbar(){
-            angular.element("#toolbarContainer")
-                .addClass('md-fab-fixed-bottom-toolbar-visible');
+        function _initEvents() {
+
         }
 
-        function shrinkToolbar() {
-            angular.element('#toolbarContainer').removeClass('md-fab-fixed-bottom-toolbar-visible');
-        }
-
+        ////////////////////
+        // destruction
+        ////////////////////
 
         function onDestroy(){
         }

@@ -5,5 +5,7 @@
     'use strict';
 
     angular.module('addressBook',
-        ['addressBook.services']);
+        ['addressBook.services',
+            'addressBook.layout'
+        ]);
 })();

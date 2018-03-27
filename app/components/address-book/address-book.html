@@ -1,36 +1,9 @@
-<div flex id="sideNavContainer" ng-class="{'md-sidenav-left':vm.sideNavState}">
-    <md-sidenav flex="20" md-component-id="left" md-is-open="vm.sideNavState">
-        <div>
-            <md-toolbar class="md-theme-light">
-                <div layout-padding layout-align="center center">
-                    <h1 class="md-toolbar-tools">Settings</h1>
-                </div>
-            </md-toolbar>
-            <md-divider></md-divider>
-            <div layout-padding layout="column" layout-align="start start">
-
-                <div layout-fill flex layout="row" layout-align="start center">
-                    <md-button ng-click="vm.addArtistFromSideNav()" class="md-icon-button md-raised">
-                        <md-icon>person</md-icon>
-                    </md-button>
-                    <span>Add new artist</span>
-                </div>
-
-                <div layout-fill layout="row" layout-align="start center">
-                    <md-button ng-click="vm.switchSideNav()" class="md-icon-button md-raised md-warn">
-                        <md-icon>cancel</md-icon>
-                    </md-button>
-                    <span>Close</span>
-                </div>
-            </div>
-        </div>
-    </md-sidenav>
-</div>
+<address-book-navBar></address-book-navBar>
 
 <div flex>
     <div id="toasterContainer" class="md-toaster-fixed-top"></div>
 
-    <md-content id="addressBookContainer" layout="column" layout-align="start stretch" ng-show="true">
+    <div id="addressBookContainer" layout="column" layout-align="start stretch" ng-show="true">
         <div id="sideNavTrigger" class="md-sidenav-trigger-btn">
             <md-button class="md-fab md-raised" ng-click="vm.switchSideNav()">
                 <md-icon>settings</md-icon>
@@ -58,7 +31,7 @@
                 </div>
             </div>
         </div>
-    </md-content>
+    </div>
 
     <div id="toolbarContainer" class="md-fab-fixed-bottom" ng-show="vm.show">
         <md-fab-toolbar md-direction="left"
